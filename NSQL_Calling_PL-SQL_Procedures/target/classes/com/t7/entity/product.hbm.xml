@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+	<class name="com.t7.entity.Product" table="PRODUCT_INFO">
+        <id name="pid" column="PID" length="10" type="int"/>
+        <property name="pname" column="PNAME" length="20" type="string"/>
+        <property name="price" column="PRICE" length="10" type="float" precision="2"/>
+        <property name="qty" column="QTY" length="10" type="int"/>
+        <property name="status" column="STATUS" type="boolean"/>
+    </class>
+
+    <sql-query name="CALL_PROCEDURE" callable="true">
+        <return class="com.t7.entity.Product"/>
+          <![CDATA[ {call P_NSQL_CALLING_PROCEDURESHB(?,?,?)} ]]>
+<!--           <![CDATA[   {call  P_NSQL_CALLING_PROCEDURESHB(?,:min,:max)}  ]]> -->
+          
+        </sql-query>
+	</hibernate-mapping>

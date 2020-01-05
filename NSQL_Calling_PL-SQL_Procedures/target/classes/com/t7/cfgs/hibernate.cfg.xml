@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+ <hibernate-configuration>
+ <session-factory>
+ <!-- db connection -->
+ <!-- its better to Oracle11g or before version for fast execution if your hibernate 5.4 onwards your application will execute very slow -->
+ <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+ <property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+ <property name="connection.username">system</property>
+ <property name="connection.password">manager</property>
+
+        <!--Hibernate Properties-->
+        <property name="format_sql">true</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="use_sql_comments">true</property>
+        
+        <!-- DataSource -->
+        <property name="hibernate.connection.provider_class">com.zaxxer.hikari.hibernate.HikariConnectionProvider</property>
+        <property name="hibernate.hikari.minimumIdle">3</property>
+        <property name="hibernate.hikari.maximumPoolSize">8</property>
+        <property name="hibernate.hikari.idleTimeout">30000</property>
+       
+        <mapping resource="com/t7/entity/product.hbm.xml"/>
+ </session-factory>
+ </hibernate-configuration>
